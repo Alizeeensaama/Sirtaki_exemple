@@ -1,6 +1,16 @@
 <!-- https://github.com/jgbarah/aframe-playground/tree/master/moving-01 -->
 <!-- Fox : https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Fox -->
 <!-- animations : dans le gltf "name":  Walk / Survey / Run-->
+<!-- https://github.com/n5ro/aframe-extras/tree/master/src/loaders#animation
+parametres : attention : sensible à la casse
+- clip: run_* accepte wildcards
+- loop : once|repeat|pingpong (reverse)
+- duration : AUTO | (en secondes = ralenti ou accéléré)
+- crossFadeDuration :	0 | (secondesà)	durée des transitions entre clips
+- repetitions : Infinity | nb de fois
+- timeScale :	1 (vitesse : <1 ralenti, >1 accéléré)
+- clampWhenFinished :	false
+ -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,29 +23,15 @@
 
       <a-scene>
         <a-assets>
-          <a-asset-item id="cube" src="./models/leo_alizee_82timeline.glb"></a-asset-item>
+          <a-asset-item id="fox" src="./models/fox.glb"></a-asset-item>
         </a-assets>
 
-        <a-entity position="-10 -4 -10"
-                  rotation="90 0 -80"
-                  scale="1 1 1"
-                  gltf-model="#cube"
-                  animation-mixer="clip: 01_pas_D">
+        <a-entity position="-4 -2 -9"
+                  rotation="0 60 0"
+                  scale="0.03 0.03 0.03"
+                  gltf-model="#fox"
+                  animation-mixer="clip: Run; repetitions : 10; timeScale: 3; ">
         </a-entity>
-
-        <a-entity position="0 -4 -15"
-                  rotation="90 0 -80"
-                  scale="1 1 1"
-                  gltf-model="#cube"
-                  animation-mixer="clip: 02_pas_F">
-        </a-entity>
-
-      <!--  <a-entity position="8 -4 -10"
-                  rotation="90 0 -80"
-                  scale="1 1 1"
-                  gltf-model="#cube"
-                  animation-mixer="clip: 1_right"> 
-        </a-entity>-->
 
         <a-sky color="grey"></a-sky>
         <a-light type="ambient" color="white"></a-light>
