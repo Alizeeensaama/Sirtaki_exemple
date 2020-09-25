@@ -13,29 +13,29 @@
 
       <a-scene>
         <a-assets>
-          <a-asset-item id="cube" src="./models/hommerig_compil.glb"></a-asset-item>
+          <a-asset-item id="cube" src="./models/leo_alizee_animpas1et2.glb"></a-asset-item>
         </a-assets>
 
         <a-entity position="-10 -4 -10"
                   rotation="90 0 -80"
-                  scale="1 1 1"
+                  scale="4 4 4"
                   gltf-model="#cube"
-                  animation-mixer="clip: 2_left">
+                  animation-mixer="clip: 01_pas_D">
         </a-entity>
 
         <a-entity position="0 -4 -15"
                   rotation="90 0 -80"
-                  scale="1 1 1"
+                  scale="4 4 4"
                   gltf-model="#cube"
-                  animation-mixer="clip: 3_cote">
+                  animation-mixer="clip: 02_pas_F">
         </a-entity>
 
-        <a-entity position="8 -4 -10"
+      <!--  <a-entity position="8 -4 -10"
                   rotation="90 0 -80"
                   scale="1 1 1"
                   gltf-model="#cube"
                   animation-mixer="clip: 1_right">
-        </a-entity>
+        </a-entity> -->
 
         <a-sky color="grey"></a-sky>
         <a-light type="ambient" color="white"></a-light>
