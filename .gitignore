@@ -1,0 +1,10 @@
+# ignore files
+.DS_Store
+Thumbs.db
+~*.*
+
+# ignore files
+/todo.txt
+
+# ignore rep
+/PAS RENDU
