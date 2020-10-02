@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+
+    <script>
+           var nb;
+       AFRAME.registerComponent('loaded', {
+         init: function () {
+           var el = this.el;
+           el.addEventListener ('model-loaded', () => {
+              console.log (">>>> modele chargé "+this.el.id);
+            });
+           el.addEventListener ('model-error', () => {
+              console.log (">>>> modele erreur");
+            });
+          }
+        });
+
+        AFRAME.registerComponent('finished', {
+          init: function () {
+             addEventListener ('animation-finished', () => {
+               console.log (">>>> animation terminée");
+           });
+          }
+         });
+         AFRAME.registerComponent('loop', {
+           init: function () {
+              addEventListener ('animation-loop', () => {
+                console.log (">>>> loop terminée n°"+nb);
+              });
+             }
+            });
+
+    </script>
+  </head>
+ <body>
+   <a-scene>
+     <a-assets>
+       <a-asset-item id="leo" src="./models/leo_alizee_animations.glb"></a-asset-item>
+     </a-assets>
+
+    <a-entity id="Léo"
+              position="-10 -4 -10"
+              rotation="90 250 -80"
+              scale="4 4 4"
+              gltf-model="#leo"
+              animation-mixer="clip: 04_pas_F; repetitions: 5; timeScale: 1.75;"
+              loaded
+              finished
+              loop
+              >
+    </a-entity>
+
+        <a-sky color="#97F6E4"></a-sky>
+        <a-light type="ambient" color="white"></a-light>
+        <a-light type="point" intensity="1" position="-2 2 2"></a-light>
+   </a-scene>
+  </body>
+</html>
