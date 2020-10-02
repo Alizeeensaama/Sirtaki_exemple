@@ -5,7 +5,6 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
 
     <script>
-           var nb;
        AFRAME.registerComponent('loaded', {
          init: function () {
            var el = this.el;
@@ -25,13 +24,55 @@
            });
           }
          });
+
+         //indique nb de loop
          AFRAME.registerComponent('loop', {
            init: function () {
+               var nb = 0;
               addEventListener ('animation-loop', () => {
                 console.log (">>>> loop terminée n°"+nb);
+                nb++;
               });
-             }
-            });
+            }
+          });
+
+            //donne un nb random a chaque fois
+            AFRAME.registerComponent('changepas', {
+              init: function () {
+                 addEventListener ('animation-loop', () => {
+
+                  function getRandomInt(max) {
+                    return Math.floor(Math.random() * Math.floor(max));
+                  }
+                   var random = (getRandomInt(5));
+                   //console.log (">>>> nombre tiré: "+random);
+
+                   switch (random) {
+
+                    case 0:
+                      this.el.setAttribute ("animation-mixer", "clip: 01_pas_D")
+                      break;
+
+                      case 1:
+                        this.el.setAttribute ("animation-mixer", "clip: 02_pas_F")
+                        break;
+
+                      case 2:
+                        this.el.setAttribute ("animation-mixer", "clip: 03_pas_D")
+                        break;
+
+                      case 3:
+                        this.el.setAttribute ("animation-mixer", "clip: 04_pas_F")
+                        break;
+
+                      case 4:
+                        this.el.setAttribute ("animation-mixer", "clip: 05_pas_F")
+                        break;
+
+                    }
+                  });
+                  }
+               });
 
     </script>
   </head>
@@ -50,6 +91,7 @@
               loaded
               finished
               loop
+              changepas
               >
     </a-entity>
 
