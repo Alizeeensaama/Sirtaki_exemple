@@ -45,8 +45,19 @@
                   function getRandomInt(max) {
                     return Math.floor(Math.random() * Math.floor(max));
                   }
-                   var random = (getRandomInt(5));
+                   var temporaire = (getRandomInt(5));
+                   console.log("premier tirage "+temporaire);
 
+                   //ne pas faire rejouer une anim
+                   while (temporaire == random) {
+                     var temporaire = (getRandomInt(5));
+                     console.log("nouvelle valeur "+temporaire);
+                   }
+                   var random = temporaire;
+                   console.log("valeur de random "+ random);
+                   //Fin de la boucle
+
+                  //appelle des anims
                    switch (random) {
 
                     case 0:
@@ -87,7 +98,7 @@
               rotation="90 250 -80"
               scale="4 4 4"
               gltf-model="#leo"
-              animation-mixer="clip: pas_04_F; repetitions: 5; timeScale: 1.5;"
+              animation-mixer="clip: pas_01_D; repetitions: 5; timeScale: 3;"
               loaded
               finished
               loop
