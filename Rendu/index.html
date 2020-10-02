@@ -6,8 +6,6 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
     //script pour jouer les anims
 
-    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
-    //script envirronement
 
     <script>
        AFRAME.registerComponent('loaded', {
@@ -96,6 +94,8 @@
    <a-scene>
      <a-assets>
        <a-asset-item id="leo" src="./models/leo_alizee.glb"></a-asset-item>
+       <a-asset-item id="decors" src="./models/decors.glb"></a-asset-item>
+
      </a-assets>
 
     <a-entity id="Léo"
@@ -111,7 +111,15 @@
               >
     </a-entity>
 
-<!--<a-entity environment="src="./models/decors.glb"></a-entity>!-->
+  <!--<a-entity id="decors"
+            position="-10 -30 -10"
+            scale="20 20 20"
+            gltf-model="#decors"
+COMMENTAIRE: METTRE UN DECORS
+>
+</a-entity>-->
+
+
 
 
 
