@@ -5,6 +5,7 @@
     //script VR
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
     //script pour jouer les anims
+    <script src="./unlock_audio_ios.js"></script>
 
 
     <script>
@@ -91,23 +92,29 @@
     </script>
   </head>
  <body>
+
+
    <a-scene>
+
      <a-assets>
        <a-asset-item id="leo" src="./models/leo_alizee.glb"></a-asset-item>
        <a-asset-item id="decors" src="./models/decors.glb"></a-asset-item>
+       <audio id="son" src="./assets/zorba.mp3" preload="auto" loop="false"></audio>
 
      </a-assets>
-
+     <a-plane scale="50 50 50" position="-10 -4 -10" rotation = "-90 0 0" color = "white" shadow="receive:true"></a-plane>
     <a-entity id="Léo"
               position="-10 -4 -10"
               rotation="90 250 -80"
               scale="4 4 4"
               gltf-model="#leo"
               animation-mixer="clip: pas_01_D; repetitions: 10; timeScale: 1.5;"
-              loaded
+              loaded 
               finished
               loop
               changepas
+              shadow ="cast:true"
+              shadow ="receive:false"
               >
     </a-entity>
 
@@ -125,8 +132,43 @@ COMMENTAIRE: METTRE UN DECORS
 
         <a-sky color="#97F6E4"></a-sky>
         <a-light type="ambient" color="white"></a-light>
-        <a-light type="point" intensity="1" position="-2 2 2"></a-light>
+        <a-entity light="type:directional; castShadow:true" intensity="1" position="-2 2 2" ></a-light>
 
    </a-scene>
+   <button id="bouton" style="position: absolute; left: 200px; bottom: 200px;">SON ON</button>
+
+   <script>
+       var b = document.querySelector('#bouton');
+       var son_vol = document.querySelector('#son');
+
+       var AudioContext = window.AudioContext || window.webkitAudioContext;
+       var contexteAudio = new AudioContext;
+
+       unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
+
+       function resumeAudio() {
+           console.log(contexteAudio.state);
+
+           if(contexteAudio.state == "suspended")
+           {
+                 contexteAudio.resume();
+                 console.log('Playback resumed successfully');
+                 son_vol.play();
+                 b.innerHTML = "SON OFF";
+                 console.log("SON OFF");
+           }
+           else {
+                 contexteAudio.suspend();
+                 console.log('Playback paused successfully');
+                 son_vol.pause();
+                 b.innerHTML = "SON ON";
+                 console.log("SON ON");
+           }
+           //document.removeEventListener("click", resumeAudio);
+       }
+       b.onclick = resumeAudio;
+
+     </script>
+
   </body>
 </html>
