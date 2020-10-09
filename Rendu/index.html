@@ -6,6 +6,89 @@
       <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
       <script src="./unlock_audio_ios.js"></script>
 
+      <script>
+         AFRAME.registerComponent('loaded', {
+           init: function () {
+             var el = this.el;
+             el.addEventListener ('model-loaded', () => {
+                console.log (">>>> modele chargé "+this.el.id);
+              });
+             el.addEventListener ('model-error', () => {
+                console.log (">>>> modele erreur");
+              });
+            }
+          });
+
+          //indique quand l'anim se termine
+          AFRAME.registerComponent('finished', {
+            init: function () {
+               addEventListener ('animation-finished', () => {
+                 console.log (">>>> animation terminée");
+             });
+            }
+           });
+
+           //indique nb de loop
+           AFRAME.registerComponent('loop', {
+             init: function () {
+                 var nb = 0;
+                addEventListener ('animation-loop', () => {
+                  console.log (">>>> loop terminée n°"+nb);
+                  nb++;
+                });
+              }
+            });
+
+              //donne un nb random a chaque fois
+              AFRAME.registerComponent('changepas', {
+                init: function () {
+                   addEventListener ('animation-loop', () => {
+
+                    function getRandomInt(max) {
+                      return Math.floor(Math.random() * Math.floor(max));
+                    }
+                     var temporaire = (getRandomInt(5));
+                     console.log("premier tirage "+temporaire);
+
+                     //ne pas faire rejouer une anim
+                     while (temporaire == random) {
+                       var temporaire = (getRandomInt(5));
+                       console.log("nouvelle valeur "+temporaire);
+                     }
+                     var random = temporaire;
+                     console.log("valeur de random "+ random);
+                     //Fin de la boucle
+
+                    //appelle des anims
+                     switch (random) {
+
+                      case 0:
+                        this.el.setAttribute ("animation-mixer", "clip: pas_01_D")
+                        break;
+
+                        case 1:
+                          this.el.setAttribute ("animation-mixer", "clip: pas_02_F")
+                          break;
+
+                        case 2:
+                          this.el.setAttribute ("animation-mixer", "clip: pas_03_D")
+                          break;
+
+                        case 3:
+                          this.el.setAttribute ("animation-mixer", "clip: pas_04_F")
+                          break;
+
+                        case 4:
+                          this.el.setAttribute ("animation-mixer", "clip: pas_05_F")
+                          break;
+
+                      }
+                    });
+                    }
+                 });
+
+      </script>
+
 
     </head>
 
@@ -36,12 +119,12 @@
                 rotation="90 0 165"
                 scale="1 1 1"
                 gltf-model="#Léo"
-                animation-mixer="clip: pas_01_D; repetitions: 15; timeScale: 0.5"
+                animation-mixer="clip: pas_01_D; repetitions: 10; timeScale: 1.5;"
                 loaded
                 finished
-                changepas
                 loop
-                shadow="cast:true; receive:true"
+                changepas
+                shadow ="cast:true; receive:false"
                 >
 
       </a-entity>
