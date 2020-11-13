@@ -57,7 +57,7 @@
         var el = this.el;
         var pas = 1;
         var vitesse = 0.5;
-        var action = ["pas_01_D", "pas_02_F", "pas_03_D", "pas_04_F", "pas_05_F"]
+        var action = ["pas_01", "pas_02", "pas_03", "pas_04", "pas_05"]
         el.addEventListener('animation-finished', () => {
 
         if (pas <5) {
@@ -130,7 +130,7 @@
     <a-entity light="type: directional; castShadow:true; intensity: 0.5" position="-0.412 0.728 1.709"></a-entity>
 
     <!-- zn jaune = les composants-->
-    <a-entity id="Léo" position="0 0 -4" rotation="90 90 165" scale="1 1 1" gltf-model="#Léo" animation-mixer= "clip: pas_01_D; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
+    <a-entity id="Léo" position="0 0 -4" rotation="90 90 165" scale="1 1 1" gltf-model="#Léo" animation-mixer= "clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
 
     </a-entity>
 
