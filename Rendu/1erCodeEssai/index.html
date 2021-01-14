@@ -93,8 +93,11 @@
             el.removeAttribute("animation-mixer");
             el.setAttribute("animation-mixer", "clip:" + action[random]);
             el.setAttribute("animation-mixer", "loop: once");
-            el.setAttribute("animation-mixer", "timeScale: "+vitesse);
-            vitesse = vitesse*1.5;
+            el.setAttribute("animation-mixer", "timeScale: "+ vitesse);
+            vitesse = vitesse*1.2;
+            if (vitesse > 3.5 ) { vitesse = 3.5  }
+            console.log("la vitesse" + vitesse);
+
 
       }
     });
