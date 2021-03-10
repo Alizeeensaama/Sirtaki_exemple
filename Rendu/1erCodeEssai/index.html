@@ -130,7 +130,7 @@
       <a-asset-item id="glbTom" src="./models/tom_martin.glb"></a-asset-item>
       <a-asset-item id="glbMarion" src="./models/marion_loic.glb"></a-asset-item>
       <a-asset-item id="glbJasmine" src="./models/jasmine_louane.glb"></a-asset-item>
-    <!--   <a-asset-item id="glbLaurine" src="./models/laurine_kilian.glb"></a-asset-item>-->
+      <!--   <a-asset-item id="glbLaurine" src="./models/laurine_kilian.glb"></a-asset-item>-->
       <a-asset-item id="glbAdrien" src="./models/adrien_come.glb"></a-asset-item>
       <!--  <a-asset-item id="glbLouane" src="./models/louane_jasmine.glb"></a-asset-item> -->
       <!--  <a-asset-item id="cube" src="./assets/cube.glb" </a-asset-item> -->
@@ -164,7 +164,7 @@
     <a-entity id="glbCome" position="2.635 0 -3.346" rotation="90 -90 0" scale="1 1 1" gltf-model="#glbCome" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
     </a-entity>
 
-    <a-entity id="glbHugo" position="5.517 0.065 -1.315" rotation="0 0 0" scale="1 1 1" gltf-model="#glbHugo" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
+    <a-entity id="glbHugo" position="5.517 0.065 -1.315" rotation="0 -180 0" scale="1 1 1" gltf-model="#glbHugo" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
     </a-entity>
 
     <a-entity id="glbLoic" position="5.517 0.006 2.065" rotation="90 90 -90" scale="1 1 1" gltf-model="#glbLoic" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
@@ -251,14 +251,14 @@
           contexteAudio.resume();
           console.log('Playback resumed successfully');
           son_zorba.play();
-          b.innerHTML = "SON OFF";
-          console.log("SON OFF");
+          b.innerHTML = "STOP LA MUSIQUE MAN";
+          console.log("STOP LA MUSIQUE MAN");
         } else {
           contexteAudio.suspend();
           console.log('Playback paused successfully');
           son_zorba.pause();
-          b.innerHTML = "SON ON";
-          console.log("SON ON");
+          b.innerHTML = "MUSIQUE MAESTRO";
+          console.log("MUSIQUE MAESTRO");
         }
         //document.removeEventListener("click", resumeAudio);
       }
