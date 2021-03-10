@@ -60,51 +60,50 @@
         var action = ["pas_01", "pas_02", "pas_03", "pas_04", "pas_05"]
         el.addEventListener('animation-finished', () => {
 
-        if (pas <5) {
-          //il ne prend pas en compte le repetitions suivant
+          if (pas < 5) {
+            //il ne prend pas en compte le repetitions suivant
 
-              el.removeAttribute("animation-mixer");
-              el.setAttribute("animation-mixer", "clip:" + action[pas]);
-              el.setAttribute("animation-mixer", "repetitions: 3");
-              pas++;
+            el.removeAttribute("animation-mixer");
+            el.setAttribute("animation-mixer", "clip:" + action[pas]);
+            el.setAttribute("animation-mixer", "repetitions: 3");
+            pas++;
 
+          } else {
+            console.log("coucou je suis rentré dans le else");
+
+
+            function getRandomInt(max) {
+              return Math.floor(Math.random() * Math.floor(max));
             }
-
-        else {
-          console.log("coucou je suis rentré dans le else");
-
-
-          function getRandomInt(max) {
-            return Math.floor(Math.random() * Math.floor(max));
-          }
-          var temporaire = (getRandomInt(4));
-          console.log("premier tirage " + temporaire);
-
-          //ne pas faire rejouer une anim
-          while (temporaire == random) {
             var temporaire = (getRandomInt(4));
-            console.log("nouvelle valeur " + temporaire);
-          }
-          var random = temporaire;
-          console.log("valeur de random " + random);
-          //Fin de la boucle
+            console.log("premier tirage " + temporaire);
 
-          //appelle des anims
+            //ne pas faire rejouer une anim
+            while (temporaire == random) {
+              var temporaire = (getRandomInt(4));
+              console.log("nouvelle valeur " + temporaire);
+            }
+            var random = temporaire;
+            console.log("valeur de random " + random);
+            //Fin de la boucle
+
+            //appelle des anims
             el.removeAttribute("animation-mixer");
             el.setAttribute("animation-mixer", "clip:" + action[random]);
             el.setAttribute("animation-mixer", "loop: once");
-            el.setAttribute("animation-mixer", "timeScale: "+ vitesse);
-            vitesse = vitesse*1.1;
-            if (vitesse > 3.5 ) { vitesse = 3.5  }
+            el.setAttribute("animation-mixer", "timeScale: " + vitesse);
+            vitesse = vitesse * 1.1;
+            if (vitesse > 3.5) {
+              vitesse = 3.5
+            }
             console.log("la vitesse " + vitesse);
 
 
+
+          }
+        });
       }
     });
-    }
-    });
-
-
   </script>
 
 
@@ -119,9 +118,23 @@
   <a-scene>
     <!-- assets = je donne la référence du "lieu" ou se trouve le fichier-->
     <a-assets>
-      <a-asset-item id="Léo" src="./models/leo_alizee.glb" </a-asset-item>
-        <audio id="son" src="./assets/zorba.mp3" preload="auto" loop="false"></audio>
-        <img id="thira" crossorigin="anonymous" src="./assets/thira.jpg" />
+      <a-asset-item id="Léo" src="./models/leo_alizee.glb"></a-asset-item>
+      <a-asset-item id="glbAlizee" src="./models/alizee_leo.glb"></a-asset-item>
+      <a-asset-item id="glbAntoine" src="./models/antoine_hugo.glb"></a-asset-item>
+      <a-asset-item id="glbCecile" src="./models/cecile_genia.glb"></a-asset-item>
+      <a-asset-item id="glbCome" src="./models/come_adrien.glb"></a-asset-item>
+      <a-asset-item id="glbGenia" src="./models/genia_cecile.glb"></a-asset-item>
+      <a-asset-item id="glbHugo" src="./models/hugo_antoine.glb"></a-asset-item>
+      <a-asset-item id="glbLoic" src="./models/loic_marion.glb"></a-asset-item>
+      <a-asset-item id="glbMartin" src="./models/martin_tom.glb"></a-asset-item>
+      <a-asset-item id="glbTom" src="./models/tom_martin.glb"></a-asset-item>
+      <a-asset-item id="glbMarion" src="./models/marion_loic.glb"></a-asset-item>
+      <a-asset-item id="glbJasmine" src="./models/jasmine_louane.glb"></a-asset-item>
+      <a-asset-item id="glbLaurine" src="./models/laurine_kilian.glb"></a-asset-item>
+      <!--  <a-asset-item id="glbLouane" src="./models/louane_jasmine.glb"></a-asset-item> -->
+      <!--  <a-asset-item id="cube" src="./assets/cube.glb" </a-asset-item> -->
+      <audio id="son" src="./assets/zorba.mp3" preload="auto" loop="false"></audio>
+      <img id="ioannis" crossorigin="anonymous" src="./assets/ioannis.jpg" />
     </a-assets>
 
 
@@ -133,50 +146,119 @@
     <a-entity light="type: directional; castShadow:true; intensity: 0.5" position="-0.412 0.728 1.709"></a-entity>
 
     <!-- zn jaune = les composants-->
-    <a-entity id="Léo" position="0 0 -4" rotation="90 90 165" scale="1 1 1" gltf-model="#Léo" animation-mixer= "clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
-
+    <a-entity id="Léo" position="0 0 -4" rotation="90 90 165" scale="1 1 1" gltf-model="#Léo" animation-mixer="duration: 4; clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
     </a-entity>
 
-    <a-sky src="#thira"></a-sky>
+    <a-entity id="glbAlizee" position="2.241 0 -6.600" rotation="90 -90 0" scale="1 1 1" gltf-model="#glbAlizee" animation-mixer="duration: 4; clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random
+      shadow="cast:true; receive:false">
+    </a-entity>
+
+    <a-entity id="glbAntoine" position="-2.686 0 -6.600" rotation="90 0 0" scale="1 1 1" gltf-model="#glbAntoine" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random
+      shadow="cast:true; receive:false">
+    </a-entity>
+
+    <a-entity id="glbCecile" position="-3.284 0 -3.346" rotation="90 0 0" scale="1 1 1" gltf-model="#glbCecile" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
+    </a-entity>
+
+    <a-entity id="glbCome" position="2.635 0 -3.346" rotation="90 -90 0" scale="1 1 1" gltf-model="#glbCome" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
+    </a-entity>
+
+    <a-entity id="glbHugo" position="5.517 0.065 -1.315" rotation="0 0 0" scale="1 1 1" gltf-model="#glbHugo" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
+    </a-entity>
+
+    <a-entity id="glbLoic" position="5.517 0.006 2.065" rotation="90 90 -90" scale="1 1 1" gltf-model="#glbLoic" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
+    </a-entity>
+
+    <a-entity id="glbMartin" position="8.757 0.006 0.493" rotation="90 90 -90" scale="1 1 1" gltf-model="#glbMartin" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random
+      shadow="cast:true; receive:false">
+    </a-entity>
+
+    <!--  <a-entity id ="glbTom"  position="8.757 0.006 0.493" rotation="90 90 -90" scale="1 1 1" gltf-model="#glbTom" animation-mixer= "duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
+      </a-entity>-->
+
+    <a-entity id="glbMarion" position="8.757 0.006 4.225" rotation="90 90 -90" scale="1 1 1" gltf-model="#glbMarion" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random
+      shadow="cast:true; receive:false">
+    </a-entity>
+
+    <a-entity id="glbJasmine" position="-4.951 0.006 -0.699" rotation="90 90 90" scale="1 1 1" gltf-model="#glbJasmine" animation-mixer="duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random
+      shadow="cast:true; receive:false">
+    </a-entity>
+
+    <!--   <a-entity id ="glbLaurine"  position="-4.951 0.006 -0.699" rotation="90 90 90" scale="1 1 1" gltf-model="#glbLaurine" animation-mixer= "duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
+            </a-entity> -->
+    <!--     <a-entity id ="glbLouane"  position="-4.951 0.006 -0.699" rotation="90 90 90" scale="1 1 1" gltf-model="#glbLouane" animation-mixer= "duration: 4;clip: pas_01; repetitions: 3" loaded finished loop danse changepas-random shadow="cast:true; receive:false">
+            </a-entity> -->
+
+    <!--   <a-entity id="cube" position="0 0 -4" rotation="0 0 0" scale="4 4 4" gltf-model="#cube"
+        material="transparent: true;"
+        animation="property: opacity; from: 1; to: 0; dur: 5; delay: 2"> -->
 
 
 
-    <a-plane scale="8 8 8" position="1.64 0 -5.6" rotation="-90 0 0" color="#32B5F6" width="5" height="5" shadow="receive: true" material="transparent: true; opacity: 0.5">
+    <a-sky src="#ioannis"></a-sky>
+
+
+    <!-- Plan du bas-->
+    <a-plane scale="8 8 8" position="1.64 0 -5.6" rotation="-90 0 0" color="#FFFFFF" width="5" height="5" shadow="receive: true" material="transparent: true; shader: flat;" animation="property: opacity; from: 1; to: 0; dur: 60000; delay: 10000">
     </a-plane>
 
+    <!-- Pour fair l'ombre -->
+    <a-plane scale="8 8 8" position="1.64 0 -5.6" rotation="-90 0 0" color="#FFFFFF" width="5" height="5" shadow="receive: true" material="transparent: true; opacity: 0.3" </a-plane>
+
+      <!-- Plan de droite-->
+      <a-plane scale="8 8 8" position="21.095 0.047 -5.416" rotation=" 0 -90 0" color="#FFFFFF" width="5" height="5" shadow="receive: true" material="transparent: true; shader: flat;"
+        animation="property: opacity; from: 1; to: 0; dur: 60000; delay: 10000">
+      </a-plane>
+      <!-- Plan de dos-->
+      <a-plane scale="8 8 8" position="1.64 0 13.946" rotation="0 180 0" color="#FFFFFF" width="5" height="5" shadow="receive: true" material="transparent: true; shader: flat;" animation="property: opacity; from: 1; to: 0; dur: 60000; delay: 10000">
+      </a-plane>-->
+      <!-- Plan de gauche-->
+      <a-plane scale="8 8 8" position="-18.30 0.047 -5.416" rotation=" 0 90 0" color="#FFFFFF" width="5" height="5" shadow="receive: true" material="transparent: true; shader: flat;"
+        animation="property: opacity; from: 1; to: 0; dur: 60000; delay: 10000">
+      </a-plane>
+      <!-- Plan du haut-->
+      <a-plane scale="8 8 8" position="1.575 19.919 -5.239" rotation=" 90 0 0" color="#FFFFFF" width="5" height="5" shadow="receive: true" material="transparent: true; shader: flat;"
+        animation="property: opacity; from: 1; to: 0; dur: 60000; delay: 10000">
+      </a-plane>-->
+
+      <!-- Plan de dos-->
+      <a-plane scale="8 8 8" position="1.575 -19.94 -5.239" rotation=" -90 0 0" color="#FFFFFF" width="5" height="5" shadow="receive: true" material="transparent: true; shader: flat;"
+        animation="property: opacity; from: 1; to: 0; dur: 60000; delay: 10000">
+      </a-plane>
+
   </a-scene>
-  <!-- GESTION AUDIO -->
-  <button id="bouton" style="position: absolute; left: 20px; bottom: 20px;">Go</button>
 
-  <script>
-    var b = document.querySelector('#bouton');
-    var son_zorba = document.querySelector('#son');
+  <GESTION AUDIO <button id="bouton" style="position: absolute; left: 20px; bottom: 20px;">Go</button>
 
-    var AudioContext = window.AudioContext || window.webkitAudioContext;
-    var contexteAudio = new AudioContext;
+    <script>
+      var b = document.querySelector('#bouton');
+      var son_zorba = document.querySelector('#son');
 
-    unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
+      var AudioContext = window.AudioContext || window.webkitAudioContext;
+      var contexteAudio = new AudioContext;
 
-    function resumeAudio() {
-      console.log(contexteAudio.state);
+      unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
 
-      if (contexteAudio.state == "suspended") {
-        contexteAudio.resume();
-        console.log('Playback resumed successfully');
-        son_zorba.play();
-        b.innerHTML = "SON OFF";
-        console.log("SON OFF");
-      } else {
-        contexteAudio.suspend();
-        console.log('Playback paused successfully');
-        son_zorba.pause();
-        b.innerHTML = "SON ON";
-        console.log("SON ON");
+      function resumeAudio() {
+        console.log(contexteAudio.state);
+
+        if (contexteAudio.state == "suspended") {
+          contexteAudio.resume();
+          console.log('Playback resumed successfully');
+          son_zorba.play();
+          b.innerHTML = "SON OFF";
+          console.log("SON OFF");
+        } else {
+          contexteAudio.suspend();
+          console.log('Playback paused successfully');
+          son_zorba.pause();
+          b.innerHTML = "SON ON";
+          console.log("SON ON");
+        }
+        //document.removeEventListener("click", resumeAudio);
       }
-      //document.removeEventListener("click", resumeAudio);
-    }
-    b.onclick = resumeAudio;
-  </script>
+      b.onclick = resumeAudio;
+    </script>
 </body>
 
 </html>
